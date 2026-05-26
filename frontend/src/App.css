@@ -38,6 +38,8 @@
 .landingMainContainer > div:nth-child(1){
   font-size: 2.2rem;
   color: white;
+  z-index: 2;
+  position: relative;
 }
 
 .landingMainContainer > div:nth-child(1) div[role='button'] {
@@ -91,4 +93,28 @@
   width: 30vw;
   height: auto;
   border-radius: 20px;
+}
+
+.landingPageContainer {
+  position: relative;
+}
+
+.landingPageContainer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+.landingMainContainer,
+.landingPageContainer nav {
+  position: relative;
+  z-index: 2;
+}
+
+.landingMainContainer > div:nth-child(1) {
+  font-size: 2.2rem;
+  color: white;
+  z-index: 2;
+  position: relative;
 }
