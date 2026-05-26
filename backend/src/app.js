@@ -22,9 +22,7 @@ app.use("/api/v1/users", userRoutes);
 
 const start = async () => {
     try {
-        const connectionDb = await mongoose.connect(
-            "mongodb://zoom_call:grapes123@ac-mdtqtej-shard-00-00.az3lype.mongodb.net:27017,ac-mdtqtej-shard-00-01.az3lype.mongodb.net:27017,ac-mdtqtej-shard-00-02.az3lype.mongodb.net:27017/?ssl=true&replicaSet=atlas-146y9d-shard-0&authSource=admin&appName=Cluster0"
-        );
+        const connectionDb = await mongoose.connect(process.env.MONGO_URL)
 
         console.log(`MONGO Connected DB Host : ${connectionDb.connection.host}`);
 
