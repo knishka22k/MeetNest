@@ -9,6 +9,14 @@ import{ connectToSocket } from "./controllers/socketManager.js";
 import cors from "cors";
 import userRoutes from "./routes/users.routes.js";
 
+process.on("uncaughtException", (err) => {
+    console.error("UNCAUGHT EXCEPTION:", err);
+});
+
+process.on("unhandledRejection", (err) => {
+    console.error("UNHANDLED REJECTION:", err);
+});
+
 const app = express();
 const server = createServer(app);
 const io = connectToSocket(server);
@@ -22,16 +30,21 @@ app.use("/api/v1/users", userRoutes);
 
 const start = async () => {
     try {
-        const connectionDb = await mongoose.connect(process.env.MONGO_URL)
+
+        console.log("Starting server...");
+
+        const connectionDb = await mongoose.connect(process.env.MONGO_URL);
 
         console.log(`MONGO Connected DB Host : ${connectionDb.connection.host}`);
 
         server.listen(app.get("port"), () => {
-            console.log("LISTENING ON PORT 8000");
+            console.log(`LISTENING ON PORT ${app.get("port")}`);
         });
 
     } catch (error) {
-        console.log(error);
+
+        console.error("SERVER ERROR:", error);
+
     }
 };
 
