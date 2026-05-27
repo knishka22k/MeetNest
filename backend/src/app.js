@@ -24,9 +24,10 @@ const io = connectToSocket(server);
 app.set("port", (process.env.PORT || 8000))
 app.use(cors({
   origin: [
-    "https://meetnestfrontend-149v.onrender.com",
-    "https://meetnestfrontend-b2hc.onrender.com"
-  ],
+  "https://meetnestfrontend-mfxw.onrender.com",
+  "https://meetnestfrontend-149v.onrender.com",
+  "https://meetnestfrontend-b2hc.onrender.com"
+],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
