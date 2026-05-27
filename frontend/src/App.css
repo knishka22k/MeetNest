@@ -1,9 +1,9 @@
 .landingPageContainer {
   width: 100vw;
   height: 100vh;
-  background: url("/background.png");
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: #0d0d0d;
 }
 
 .landingPageContainer nav {
