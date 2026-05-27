@@ -1,7 +1,7 @@
 import httpStatus from "http-status";
 import { User } from "../models/users.model.js";
+import { Meeting } from "../models/meeting.model.js";
 import bcrypt, { hash } from "bcrypt"
-
 import crypto from "crypto"
 
 const login = async (req, res) => {
@@ -62,7 +62,7 @@ const getUserHistory = async (req, res) => {
 
     try {
         const user = await User.findOne({token: token});
-        const meetings = await meeting.find({user_id: user.username})
+        const meetings = await Meeting.find({user_id: user.username})
         res.json(meetings)
     } catch (e){
         res.json({message: `Something went wrong ${e}`})
