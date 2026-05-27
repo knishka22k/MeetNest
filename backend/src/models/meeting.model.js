@@ -8,6 +8,6 @@ const meetingSchema = new Schema(
     }
 )
 
-const meeting = mongoose.model("Meeting", meetingSchema);
+const Meeting = mongoose.model("Meeting", meetingSchema);
 
-export default { Meeting };
+export { Meeting };
