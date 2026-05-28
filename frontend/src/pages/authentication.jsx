@@ -1,66 +1,55 @@
 import React, { useContext, useState } from "react";
+import "./LoginSignup.css";
 
-import {
-    Avatar,
-    Box,
-    Button,
-    CssBaseline,
-    Grid,
-    Paper,
-    Snackbar,
-    TextField
-} from "@mui/material";
+import user_icon from "../Assets/person.png";
+import email_icon from "../Assets/email.png";
+import password_icon from "../Assets/password.png";
 
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-
-import {
-    createTheme,
-    ThemeProvider
-} from "@mui/material/styles";
+import Snackbar from "@mui/material/Snackbar";
 
 import { AuthContext } from "../contexts/AuthContext";
 
-const defaultTheme = createTheme();
+const Authentication = () => {
 
-export default function Authentication() {
+    // ================= STATES =================
 
-    // === STATES ===
+    const [formState, setFormState] = useState("Login");
 
+    const [name, setName] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [name, setName] = useState("");
 
     const [error, setError] = useState("");
     const [message, setMessage] = useState("");
-
-    const [formState, setFormState] = useState(0);
-
     const [open, setOpen] = useState(false);
 
-    // === CONTEXT ===
+    // ================= CONTEXT =================
 
     const { handleRegister, handleLogin } = useContext(AuthContext);
 
-    // === AUTH FUNCTION ===
+    // ================= AUTH FUNCTION =================
 
     const handleAuth = async () => {
 
         try {
 
-            // === LOGIN ===
+            // ===== LOGIN =====
 
-            if (formState === 0) {
+            if (formState === "Login") {
 
-                const result = await handleLogin(username, password);
+                const result = await handleLogin(
+                    username,
+                    password
+                );
 
                 if (result) {
                     setError(result);
                 }
             }
 
-            // === REGISTER ===
+            // ===== REGISTER =====
 
-            if (formState === 1) {
+            if (formState === "Sign Up") {
 
                 const result = await handleRegister(
                     name,
@@ -80,7 +69,7 @@ export default function Authentication() {
 
                     setError("");
 
-                    setFormState(0);
+                    setFormState("Login");
 
                 } else {
 
@@ -103,176 +92,153 @@ export default function Authentication() {
     // ================= UI =================
 
     return (
-        <ThemeProvider theme={defaultTheme}>
 
-            <Grid
-                container
-                component="main"
-                sx={{ height: "100vh" }}
-            >
+        <div className="container">
 
-                <CssBaseline />
+            {/* HEADER */}
 
-                {/* LEFT SIDE IMAGE */}
+            <div className="header">
 
-                <Grid
-                    item
-                    xs={false}
-                    sm={4}
-                    md={7}
-                    sx={{
-                        backgroundImage:
-                            "url(https://source.unsplash.com/random?wallpapers)",
+                <div className="text">
+                    {formState}
+                </div>
 
-                        backgroundRepeat: "no-repeat",
+                <div className="underline"></div>
 
-                        backgroundColor: (t) =>
-                            t.palette.mode === "light"
-                                ? t.palette.grey[50]
-                                : t.palette.grey[900],
+            </div>
 
-                        backgroundSize: "cover",
+            {/* INPUTS */}
 
-                        backgroundPosition: "center",
+            <div className="inputs">
+
+                {
+                    formState === "Sign Up" && (
+
+                        <div className="input">
+
+                            <img src={user_icon} alt="" />
+
+                            <input
+                                type="text"
+                                placeholder="Full Name"
+                                value={name}
+                                onChange={(e) =>
+                                    setName(e.target.value)
+                                }
+                            />
+
+                        </div>
+                    )
+                }
+
+                <div className="input">
+
+                    <img src={email_icon} alt="" />
+
+                    <input
+                        type="text"
+                        placeholder="Username"
+                        value={username}
+                        onChange={(e) =>
+                            setUsername(e.target.value)
+                        }
+                    />
+
+                </div>
+
+                <div className="input">
+
+                    <img src={password_icon} alt="" />
+
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) =>
+                            setPassword(e.target.value)
+                        }
+                    />
+
+                </div>
+
+            </div>
+
+            {/* FORGOT PASSWORD */}
+
+            {
+                formState === "Login" && (
+
+                    <div className="forgot-password">
+
+                        Lost Password? <span>Click Here!</span>
+
+                    </div>
+                )
+            }
+
+            {/* ERROR */}
+
+            {
+                error && (
+                    <p className="error-message">
+                        {error}
+                    </p>
+                )
+            }
+
+            {/* SUBMIT BUTTON */}
+
+            <div className="auth-button">
+
+                <button onClick={handleAuth}>
+
+                    {
+                        formState === "Login"
+                            ? "Login"
+                            : "Register"
+                    }
+
+                </button>
+
+            </div>
+
+            {/* TOGGLE BUTTONS */}
+
+            <div className="submit-container">
+
+                <div
+                    className={
+                        formState === "Login"
+                            ? "submit gray"
+                            : "submit"
+                    }
+                    onClick={() => {
+
+                        setFormState("Sign Up");
+                        setError("");
+
                     }}
-                />
-
-                {/* RIGHT SIDE FORM */}
-
-                <Grid
-                    item
-                    xs={12}
-                    sm={8}
-                    md={5}
-                    component={Paper}
-                    elevation={6}
-                    square
                 >
+                    Sign Up
+                </div>
 
-                    <Box
-                        sx={{
-                            my: 8,
-                            mx: 4,
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                        }}
-                    >
+                <div
+                    className={
+                        formState === "Sign Up"
+                            ? "submit gray"
+                            : "submit"
+                    }
+                    onClick={() => {
 
-                        <Avatar
-                            sx={{
-                                m: 1,
-                                bgcolor: "secondary.main",
-                            }}
-                        >
-                            <LockOutlinedIcon />
-                        </Avatar>
+                        setFormState("Login");
+                        setError("");
 
-                        {/* TOGGLE BUTTONS */}
+                    }}
+                >
+                    Login
+                </div>
 
-                        <Box sx={{ mb: 2 }}>
-
-                            <Button
-                                variant={
-                                    formState === 0
-                                        ? "contained"
-                                        : "outlined"
-                                }
-                                onClick={() => setFormState(0)}
-                            >
-                                Sign In
-                            </Button>
-
-                            <Button
-                                variant={
-                                    formState === 1
-                                        ? "contained"
-                                        : "outlined"
-                                }
-                                sx={{ ml: 1 }}
-                                onClick={() => setFormState(1)}
-                            >
-                                Sign Up
-                            </Button>
-
-                        </Box>
-
-                        {/* FORM */}
-
-                        <Box
-                            component="form"
-                            noValidate
-                            sx={{ mt: 1, width: "100%" }}
-                        >
-
-                            {formState === 1 && (
-
-                                <TextField
-                                    margin="normal"
-                                    required
-                                    fullWidth
-                                    label="Full Name"
-                                    value={name}
-                                    autoFocus
-                                    onChange={(e) =>
-                                        setName(e.target.value)
-                                    }
-                                />
-                            )}
-
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                label="Username"
-                                value={username}
-                                onChange={(e) =>
-                                    setUsername(e.target.value)
-                                }
-                            />
-
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                label="Password"
-                                type="password"
-                                value={password}
-                                onChange={(e) =>
-                                    setPassword(e.target.value)
-                                }
-                            />
-
-                            {/* ERROR */}
-
-                            {
-                                error && (
-                                    <p style={{ color: "red" }}>
-                                        {error}
-                                    </p>
-                                )
-                            }
-
-                            {/* SUBMIT BUTTON */}
-
-                            <Button
-                                type="button"
-                                fullWidth
-                                variant="contained"
-                                sx={{ mt: 3, mb: 2 }}
-                                onClick={handleAuth}
-                            >
-                                {
-                                    formState === 0
-                                        ? "Login"
-                                        : "Register"
-                                }
-                            </Button>
-
-                        </Box>
-                    </Box>
-                </Grid>
-            </Grid>
+            </div>
 
             {/* SNACKBAR */}
 
@@ -283,6 +249,8 @@ export default function Authentication() {
                 message={message}
             />
 
-        </ThemeProvider>
+        </div>
     );
-}
+};
+
+export default Authentication;
