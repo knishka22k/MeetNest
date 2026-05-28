@@ -23,7 +23,7 @@ function HomeComponent(){
         <div className="navBar">
 
             <div style={{display: "flex", alignItems: "center"}} className='navBar'>
-                <h2>Video Call</h2>
+                <h2>Meet Nest</h2>
             </div>
 
             <div style={{display: "flex", alignItems: "center"}}>
@@ -50,9 +50,9 @@ function HomeComponent(){
         <div className='meetContainer'>
             <div className='leftPanel'>
                 <div>
-                    <h2>Providing Quality Video Call Just Like Quality Eduction</h2>
-                    <div style={{display: 'flex', gap: "10px"}}>
-                        <textarea onChange={e => setMeetingCode(e.target.value)} id="outlined-basic" label="Meeting Code" variant="outlined"></textarea>
+                    <h2>Bringing People Together Virtually</h2>
+                    <div className="joinBox">
+                        <textarea onChange={e => setMeetingCode(e.target.value)} id="outlined-basic" label="Meeting Code" variant="outlined" placeholder='Enter meeting code'></textarea>
                         <Button onClick={handleJoinVideoCall} variant='contained' >Join</Button>
                     </div>
                 </div>

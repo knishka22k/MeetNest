@@ -9,15 +9,12 @@ const client = axios.create({
 });
 
 export const AuthProvider = ({ children }) => {
-
     const [userData, setUserData] = useState(null);
 
     // === REGISTER ===
 
     const handleRegister = async (name, username, password) => {
-
         try {
-
             const request = await client.post("/register", {
                 name,
                 username,
