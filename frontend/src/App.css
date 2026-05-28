@@ -1,3 +1,4 @@
+
 .landingPageContainer {
   width: 100vw;
   height: 100vh;
@@ -69,15 +70,7 @@
   text-align: center;
 }
 
-/* .meetContainer {
-  display: flex;
-  padding-inline: 20px;
-  height: 80vh;
-  gap: 10vw;
-  justify-content: center;
-} */
-
- .meetContainer {
+.meetContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,13 +78,6 @@
   padding-inline: 40px;
   gap: 5vw;
 }
-
-/* .leftPanel {
-  height: 100%;
-  display: flex;
-  align-items: center;
-
-} */
 
 .leftPanel {
   flex: 1;
@@ -162,81 +148,4 @@
   color: white;
   z-index: 2;
   position: relative;
-}
-
-body{
-    background: linear-gradient(135deg,#2b1055,#7597de);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container{
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    width: 500px;
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-.auth-button{
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.auth-button button{
-    width: 90%;
-    height: 50px;
-    border: none;
-    outline: none;
-    background: #4c00b4;
-    color: white;
-    font-size: 20px;
-    font-weight: 600;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.auth-button button:hover{
-    transform: scale(1.02);
-}
-
-.error-message{
-    text-align: center;
-    color: red;
-    margin-top: 15px;
-    font-size: 16px;
-}
-
-/* RESPONSIVE */
-
-@media screen and (max-width: 550px){
-
-    .container{
-        width: 90%;
-        padding: 20px;
-    }
-
-    .input{
-        width: 100%;
-    }
-
-    .input input{
-        width: 100%;
-    }
-
-    .submit-container{
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .submit{
-        width: 100%;
-    }
 }

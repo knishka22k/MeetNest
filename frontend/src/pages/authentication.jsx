@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import "../App.css";
+import "../styles/authentication.css";
 
 import user_icon from "../assets/person.png";
 import email_icon from "../assets/email.png";
