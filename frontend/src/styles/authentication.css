@@ -9,17 +9,19 @@ body {
     overflow-x: hidden;
 }
 
-.container{
+.container {
     display: flex;
     flex-direction: column;
     margin: auto;
     margin-top: 80px;
     width: 500px;
-    background: #111111;
-    border: 1px solid #2a2a2a;
+    background: rgba(255, 255, 255, 0.05);  /* transparent glass effect */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 30px;
     border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
     position: relative;
     z-index: 10;
 }
@@ -33,7 +35,7 @@ body {
 }
 
 .text{
-    color: #e0e0e0;;
+    color: #ffffff;
     font-size: 42px;
     font-weight: 700;
 }
@@ -41,7 +43,7 @@ body {
 .underline{
     width: 80px;
     height: 6px;
-    background: #3a3a3a;
+    background:  rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     margin-top: 8px;
 }
@@ -58,8 +60,8 @@ body {
     align-items: center;
     width: 100%;
     height: 65px;
-    background: #1a1a1a;
-    border: 1px solid #2a2a2a;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     padding: 0 15px;
     box-sizing: border-box;
@@ -76,18 +78,26 @@ body {
     background: transparent;
     border: none;
     outline: none;
-    color: #e0e0e0;
+    color: #ffffff;
     font-size: 18px;
+}
+
+.input input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.input img {
+    filter: invert(1) opacity(0.5);
 }
 
 .forgot-password{
     margin-top: 20px;
-    color: #888;;
+    color: rgba(255, 255, 255, 0.5);
     font-size: 17px;
 }
 
 .forgot-password span{
-    color:  #aaa;
+    color: rgba(255, 255, 255, 0.8);
     cursor: pointer;
     font-weight: 600;
 }
@@ -110,9 +120,9 @@ body {
     height: 50px;
     border: none;
     outline: none;
-    background: #2a2a2a;
-    border: 1px solid #3a3a3a;
-    color: white;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
     font-size: 20px;
     font-weight: 600;
     border-radius: 50px;
@@ -121,7 +131,7 @@ body {
 }
 
 .auth-button button:hover{
-    background: #333;
+    background: rgba(255, 255, 255, 0.2);
     transform: scale(1.02);
 }
 
@@ -137,9 +147,9 @@ body {
     align-items: center;
     width: 220px;
     height: 49px;
-    color: #fff;
-    background: #2a2a2a;
-    border: 1px solid #3a3a3a;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #ffffff;
     border-radius: 50px;
     font-size: 19px;
     font-weight: 700;
@@ -147,8 +157,9 @@ body {
 }
 
 .gray{
-    background: #1a1a1a;
-    color:#666;
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 /* RESPONSIVE */
