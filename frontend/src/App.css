@@ -129,7 +129,7 @@
 .landingPageContainer {
   width: 100vw;
   height: 100vh;
-  background: #050816;
+  background: #0a0a0a;
   overflow: hidden;
   position: relative;
 }
@@ -138,7 +138,11 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.1);
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
 }
 
 .landingMainContainer,
@@ -166,7 +170,7 @@
 .blob1{
   width: 600px;
   height: 600px;
-  background: #7b2cff;
+  background: #4A5568;
   top: -150px;
   left: -150px;
 }
@@ -174,7 +178,7 @@
 .blob2{
   width: 500px;
   height: 500px;
-  background: #ff6b00;
+  background: #2D3748;
   bottom: -150px;
   right: -100px;
   animation-delay: 2s;
@@ -183,7 +187,7 @@
 .blob3{
   width: 450px;
   height: 450px;
-  background: #00d4ff;
+  background: #A0AEC0;
   top: 30%;
   left: 35%;
   animation-delay: 4s;
