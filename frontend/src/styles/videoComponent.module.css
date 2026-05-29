@@ -1,7 +1,20 @@
 .meetVideoContainer {
     position: relative;
     height: 100vh;
-    background: rgb(1, 4, 48);
+    background: #0a0a0a;
+    overflow: hidden;
+}
+
+.meetVideoContainer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .meetUserVideo {
@@ -11,6 +24,7 @@
     width: auto;
     left: 0;
     border-radius: 20px;
+    z-index: 5;
 }
 
 .buttonContainer {
@@ -19,6 +33,10 @@
     bottom: 0;
     text-align: center;
     z-index: 10;
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-block: 8px;
 }
 
 .buttonContainer svg {
@@ -32,6 +50,8 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    position: relative;
+    z-index: 2;
 
 }
 
@@ -46,19 +66,104 @@
     position: absolute;
     height: 90vh;
     right: 0;
-    background: white;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 10px;
     width: 30vw;
     bottom: 10vh;
     padding-inline: 20px;
+    z-index: 10;
 }
 
 .chatContainer {
     position: relative;
     height: 100%;
+    color: white;
+}
+
+.chattingDisplay {
+    height: 70%;
+    overflow-y: auto;
+    padding-block: 10px;
 }
 
 .chattingArea {
     position: absolute;
     bottom: 0;
+    display: flex;
+    gap: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+.chattingArea button {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.chattingArea button:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.lobbyWrapper {
+    width: 100vw;
+    height: 100vh;
+    background: #0a0a0a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.lobbyWrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+}
+
+.lobbyCard {
+    position: relative;
+    z-index: 10;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.lobbyTitle {
+    color: white;
+    font-size: 2rem;
+    margin: 0;
+}
+
+.lobbyPreview {
+    width: 400px;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.lobbyInputRow {
+    display: flex;
+    gap: 16px;
+    align-items: center;
 }

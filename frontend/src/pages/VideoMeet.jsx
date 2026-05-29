@@ -520,19 +520,45 @@ let handleEndCall = () => {
     return(
         <div>
             {askForUsername === true ?
+    <div className={styles.lobbyWrapper}>
+        <div className="blob blob1"></div>
+        <div className="blob blob2"></div>
+        <div className="blob blob3"></div>
 
-            <div>
-                
-                {/* {messages.length > 0} */}
-                <h2>Enter into Lobby </h2>
-                <TextField id="outlined-basic" label="Username" value={username} onChange={e => setUsername(e.target.value)} variant="outlined"></TextField>
-                <Button variant="contained"onClick={connect}>Connect</Button>
-
-                <div>
-                    <video ref={localVideoRef} autoPlay muted></video>
-                </div>
-
-            </div> : 
+        <div className={styles.lobbyCard}>
+            <h2 className={styles.lobbyTitle}>Enter into Lobby</h2>
+            <video ref={localVideoRef} autoPlay muted className={styles.lobbyPreview}></video>
+            <div className={styles.lobbyInputRow}>
+                <TextField
+                    id="outlined-basic"
+                    label="Username"
+                    value={username}
+                    onChange={e => setUsername(e.target.value)}
+                    variant="outlined"
+                    sx={{
+                        input: { color: 'white' },
+                        label: { color: 'rgba(255,255,255,0.5)' },
+                        '& .MuiOutlinedInput-root': {
+                            '& fieldset': { borderColor: 'rgba(255,255,255,0.15)' },
+                            '&:hover fieldset': { borderColor: 'rgba(255,255,255,0.3)' },
+                        }
+                    }}
+                />
+                <Button
+                    variant="contained"
+                    onClick={connect}
+                    sx={{
+                        background: 'rgba(255,255,255,0.1)',
+                        border: '1px solid rgba(255,255,255,0.15)',
+                        backdropFilter: 'blur(10px)',
+                        '&:hover': { background: 'rgba(255,255,255,0.2)' }
+                    }}
+                >
+                    Connect
+                </Button>
+            </div>
+        </div>
+    </div> : 
 
 
             <div className={styles.meetVideoContainer}>
