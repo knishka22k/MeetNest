@@ -10,21 +10,15 @@ import Snackbar from "@mui/material/Snackbar";
 import { AuthContext } from "../contexts/AuthContext";
 
 const Authentication = () => {
-
     // ================= STATES =================
-
     const [formState, setFormState] = useState("Login");
-
     const [name, setName] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
     const [error, setError] = useState("");
     const [message, setMessage] = useState("");
     const [open, setOpen] = useState(false);
-
     // ================= CONTEXT =================
-
     const { handleRegister, handleLogin } = useContext(AuthContext);
 
     // ================= AUTH FUNCTION =================
@@ -46,9 +40,7 @@ const Authentication = () => {
                     setError(result);
                 }
             }
-
             // ===== REGISTER =====
-
             if (formState === "Sign Up") {
 
                 const result = await handleRegister(

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import"../App.css"
-// import bgImage from '../assets/background.png';
 
 export default function LandingPage(){
 
@@ -9,7 +8,6 @@ export default function LandingPage(){
 
 
     return (
-        // <div className='landingPageContainer' style={{backgroundImage: `url(${bgImage})`}}>
         <div className='landingPageContainer'>
             
             <div className="blob blob1"></div> 
