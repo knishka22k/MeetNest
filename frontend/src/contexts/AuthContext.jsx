@@ -10,9 +10,7 @@ const client = axios.create({
 
 export const AuthProvider = ({ children }) => {
     const [userData, setUserData] = useState(null);
-
     // === REGISTER ===
-
     const handleRegister = async (name, username, password) => {
         try {
             const request = await client.post("/register", {
@@ -93,9 +91,7 @@ export const AuthProvider = ({ children }) => {
             throw err;
         }
     };
-
     // === ADD TO HISTORY ===
-
     const addToUserHistory = async (meetingCode) => {
 
         try {
@@ -114,9 +110,7 @@ export const AuthProvider = ({ children }) => {
             throw err;
         }
     };
-
     // === CONTEXT DATA ===
-
     const data = {
         userData,
         setUserData,
