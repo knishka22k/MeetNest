@@ -23,15 +23,19 @@ const io = connectToSocket(server);
 
 app.set("port", (process.env.PORT || 8000))
 app.use(cors({
-  origin: [
+  
+    origin: [
   "https://meetnestfrontend-mfxw.onrender.com",
   "https://meetnestfrontend-149v.onrender.com",
   "https://meetnestfrontend-b2hc.onrender.com"
 ],
+
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
+
 app.use(express.json({ limit: "40kb" }));
+
 app.use(express.urlencoded({ limit: "40kb", extended: true }));
 
 app.use("/api/v1/users", userRoutes);

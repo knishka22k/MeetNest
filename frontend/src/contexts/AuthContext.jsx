@@ -43,9 +43,7 @@ export const AuthProvider = ({ children }) => {
             };
         }
     };
-
     // === LOGIN ===
-
     const handleLogin = async (username, password) => {
 
         try {
@@ -69,9 +67,7 @@ export const AuthProvider = ({ children }) => {
             return err?.response?.data?.message || "Login failed";
         }
     };
-
     // === GET HISTORY ===
-
     const getHistoryOfUser = async () => {
 
         try {
