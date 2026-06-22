@@ -15,19 +15,13 @@ import { AuthContext } from "../contexts/AuthContext";
 
 export default function History() {
 
-    // ================= CONTEXT =================
 
     const { getHistoryOfUser } = useContext(AuthContext);
 
-    // ================= STATES =================
-
     const [meetings, setMeetings] = useState([]);
-
-    // ================= NAVIGATION =================
 
     const routeTo = useNavigate();
 
-    // ================= FETCH HISTORY =================
 
     useEffect(() => {
 
