@@ -64,9 +64,7 @@ export default function History() {
 
         return `${day}/${month}/${year}`;
     };
-
     // ================= UI =================
-
     return (
 
         <div style={{ padding: "20px" }}>

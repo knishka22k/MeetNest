@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import io from "socket.io-client";
-// import { input } from '@mui/base';
 import IconButton from '@mui/material/IconButton';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import VideocamOffIcon from '@mui/icons-material/VideocamOff';
@@ -64,11 +63,6 @@ export default function VideoMeetComponent(){
     const videoRef = useRef([]) // a kind of problem
 
     let [videos  ,setVideos] = useState([])
-
-    // todo
-    // if(isChrome() == false){
-
-    // }
 
     const getPermissions = async () => {
         try {
@@ -262,7 +256,6 @@ window.localStream.getTracks().forEach(track => {
             }
         }
     }
-}
 
     //TODO addMessage
     let addMessage = (data, sender, socketIdSender) => {
@@ -294,10 +287,10 @@ window.localStream.getTracks().forEach(track => {
                 socketRef.current.on("chat-message", addMessage)
 
                 socketRef.current.on("user-left", (id) => {
-    setVideos((videos) =>
-        videos.filter((video) => video.socketId !== id)
-    )
-})
+            setVideos((videos) =>
+               videos.filter((video) => video.socketId !== id)
+           )
+    })
 
                 socketRef.current.on("user-joined", (id, clients) => {
                     clients.forEach((socketListId) => {
@@ -637,4 +630,5 @@ let handleEndCall = () => {
 
         </div>
     )
+    }
 }

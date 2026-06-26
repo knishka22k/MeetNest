@@ -15,9 +15,11 @@ export default function LandingPage(){
             <div className="blob blob3"></div>
             
             <nav>
+
                 <div className='navHeader'>
                     <h2>Meet Nest</h2>
                 </div>
+
                 <div className='navlist'>
                     
                     <p onClick={() => {
@@ -35,7 +37,9 @@ export default function LandingPage(){
                     </div>
 
                 </div>
+
             </nav>
+
             <div className='landingMainContainer'>
                 <div>
                     <h1><span style={{color: "#FF9839"}}>Connect</span> with your Loved Ones</h1>
@@ -44,9 +48,11 @@ export default function LandingPage(){
                     <Link to={"/auth"}>Get Started</Link>
                 </div>
             </div>
+
             <div>
                 <img src="/mobile.png" alt="" />
             </div>
+            
         </div>
         </div>
     )

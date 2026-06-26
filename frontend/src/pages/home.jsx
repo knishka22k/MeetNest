@@ -47,7 +47,9 @@ function HomeComponent(){
                     localStorage.removeItem("token")
                     navigate("/auth")
                 }}>
+
                     Logout
+
                 </Button>
             </div>
         </div>
@@ -68,6 +70,7 @@ function HomeComponent(){
         </div>
         
         </>
+        
         </div>
     )
 }
