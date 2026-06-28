@@ -10,6 +10,7 @@ const client = axios.create({
 
 export const AuthProvider = ({ children }) => {
     const [userData, setUserData] = useState(null);
+
     // === REGISTER ===
     const handleRegister = async (name, username, password) => {
         try {
@@ -43,6 +44,7 @@ export const AuthProvider = ({ children }) => {
             };
         }
     };
+
     // === LOGIN ===
     const handleLogin = async (username, password) => {
 
@@ -67,6 +69,7 @@ export const AuthProvider = ({ children }) => {
             return err?.response?.data?.message || "Login failed";
         }
     };
+
     // === GET HISTORY ===
     const getHistoryOfUser = async () => {
 
@@ -87,6 +90,7 @@ export const AuthProvider = ({ children }) => {
             throw err;
         }
     };
+
     // === ADD TO HISTORY ===
     const addToUserHistory = async (meetingCode) => {
 
@@ -106,6 +110,7 @@ export const AuthProvider = ({ children }) => {
             throw err;
         }
     };
+    
     // === CONTEXT DATA ===
     const data = {
         userData,
