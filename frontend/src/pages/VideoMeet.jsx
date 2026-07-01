@@ -255,7 +255,7 @@ window.localStream.getTracks().forEach(track => {
                 iceCandidateQueue[fromId].push(signal.ice);
             }
         }
-    }
+    };
 
     //TODO addMessage
     let addMessage = (data, sender, socketIdSender) => {
@@ -426,13 +426,19 @@ window.localStream.getTracks().forEach(track => {
 
             connections[id].addStream(window.localStream)
 
-            connections[id].createOffer().then((description) => [
+            connections[id].createOffer().then((description) => {
                 connections[id].setLocalDescription(description)
                 .then(() => {
-                    socketRef.current.emit("signal", id, JSON.stringify({"sdp": connections[id].localDescription}))
+                    socketRef.current.emit(
+                        "signal",
+                         id, 
+                         JSON.stringify({
+                            sdp : connections[id].localDescription
+                        })
+                    );
                 })
                 .catch(e => console.log(e))
-            ])
+        });
         }
         stream.getTracks().forEach(track => track.onended = () => {
             setScreen(false)
