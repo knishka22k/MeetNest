@@ -60,7 +60,7 @@ export default function VideoMeetComponent(){
 
     let [username, setUsername] = useState(""); //enter username
 
-    const videoRef = useRef([]) // a kind of problem
+    // const videoRef = useRef([]) // a kind of problem
 
     let [videos  ,setVideos] = useState([])
 
@@ -247,15 +247,23 @@ window.localStream.getTracks().forEach(track => {
         }
 
         if (signal.ice) {
-            if (connections[fromId].remoteDescription && connections[fromId].remoteDescription.type) {
-                connections[fromId].addIceCandidate(new RTCIceCandidate(signal.ice))
-                .catch(e => console.log(e));
-            } else {
-                if (!iceCandidateQueue[fromId]) iceCandidateQueue[fromId] = [];
-                iceCandidateQueue[fromId].push(signal.ice);
-            }
+    if (
+        connections[fromId].remoteDescription &&
+        connections[fromId].remoteDescription.type
+    ) {
+        connections[fromId]
+            .addIceCandidate(new RTCIceCandidate(signal.ice))
+            .catch(e => console.log(e));
+    } else {
+        if (!iceCandidateQueue[fromId]) {
+            iceCandidateQueue[fromId] = [];
         }
-    };
+
+        iceCandidateQueue[fromId].push(signal.ice);
+    }
+}          // closes if(fromId...)
+
+};         // closes gotMessageFromServer
 
     //TODO addMessage
     let addMessage = (data, sender, socketIdSender) => {
@@ -379,7 +387,7 @@ window.localStream.getTracks().forEach(track => {
         connectToSocketServer();
     }
 
-    let routerTo = useNavigate();
+    let navigate = useNavigate();
 
     let connect = () => {
         setAskForUsername(false);
@@ -513,7 +521,7 @@ let handleEndCall = () => {
         console.log(e);
     }
 
-    routerTo("/home");
+    navigate("/home");
 }
 
     return(
